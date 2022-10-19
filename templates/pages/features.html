@@ -1,0 +1,83 @@
+{% extends "page.html" %}
+
+{% block content %}
+<main>
+
+  <div class="container" role="">
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">{{ page.title }}</h1>
+      <p class="fs-5 text-muted">{{ page.extra.lead | safe }}</p>
+    </div>
+
+    <section class="row g-3 g-md-5 pb-md-5 mb-5 align-items-center">
+      <div class="col">
+        <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bd-teal-rgb);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" focusable="false"
+            viewBox="0 0 16 16">
+            <path d="M0 6a6 6 0 1112 0A6 6 0 010 6z"></path>
+            <path
+              d="M12.93 5h1.57a.5.5 0 01.5.5v9a.5.5 0 01-.5.5h-9a.5.5 0 01-.5-.5v-1.57a6.953 6.953 0 01-1-.22v1.79A1.5 1.5 0 005.5 16h9a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0014.5 4h-1.79c.097.324.17.658.22 1z">
+            </path>
+          </svg>
+
+        </div>
+        <h2 class="display-5 mb-3 fw-semibold lh-sm">Personalize it with Bootstrap&nbsp;Icons</h2>
+        <p class="lead fw-normal">
+          <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a> is an open source SVG icon library featuring
+          over 1,500 glyphs, with more added every release. They're designed to work in any project, whether you use
+          Bootstrap itself or not. Use them as SVGs or icon fonts—both options give you vector scaling and easy
+          customization via CSS.
+        </p>
+        <p class="d-flex justify-content-start lead fw-normal mb-md-0">
+          <a href="https://icons.getbootstrap.com/" class="icon-link fw-semibold">
+            Get Bootstrap Icons
+            <svg class="bi">
+              <use xlink:href="#arrow-right-short"></use>
+            </svg>
+          </a>
+        </p>
+      </div>
+      <div class="col">
+        <img class="img-fluid mt-3 mx-auto"
+          src="https://getbootstrap.com/docs/5.2/assets/img/bootstrap-icons@2x.png" alt="Bootstrap Icons" width="700" height="425" loading="lazy">
+      </div>
+    </section>
+
+    <section class="row g-3 g-md-5 pb-md-5 mb-5 align-items-center">
+      <div class="col">
+        <img class="img-fluid mt-3 mx-auto"
+          src="https://getbootstrap.com/docs/5.2/assets/img/bootstrap-icons@2x.png" alt="Bootstrap Icons" width="700" height="425" loading="lazy">
+      </div>
+      <div class="col">
+        <div class="masthead-followup-icon d-inline-block mb-3" style="--bg-rgb: var(--bd-teal-rgb);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" focusable="false"
+            viewBox="0 0 16 16">
+            <path d="M0 6a6 6 0 1112 0A6 6 0 010 6z"></path>
+            <path
+              d="M12.93 5h1.57a.5.5 0 01.5.5v9a.5.5 0 01-.5.5h-9a.5.5 0 01-.5-.5v-1.57a6.953 6.953 0 01-1-.22v1.79A1.5 1.5 0 005.5 16h9a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0014.5 4h-1.79c.097.324.17.658.22 1z">
+            </path>
+          </svg>
+
+        </div>
+        <h2 class="display-5 mb-3 fw-semibold lh-sm">Personalize it with Bootstrap&nbsp;Icons</h2>
+        <p class="lead fw-normal">
+          <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a> is an open source SVG icon library featuring
+          over 1,500 glyphs, with more added every release. They're designed to work in any project, whether you use
+          Bootstrap itself or not. Use them as SVGs or icon fonts—both options give you vector scaling and easy
+          customization via CSS.
+        </p>
+        <p class="d-flex justify-content-start lead fw-normal mb-md-0">
+          <a href="https://icons.getbootstrap.com/" class="icon-link fw-semibold">
+            Get Bootstrap Icons
+            <svg class="bi">
+              <use xlink:href="#arrow-right-short"></use>
+            </svg>
+          </a>
+        </p>
+      </div>
+    </section>
+  </div>
+  </div>
+</main>
+
+{% endblock content %}

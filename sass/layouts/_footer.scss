@@ -1,0 +1,23 @@
+.footer {
+  border-top: 1px solid $gray-200;
+  padding-top: 1.125rem;
+}
+
+.footer h5 {
+  margin-top: 0;
+}
+
+.footer ul {
+  margin-bottom: 0;
+}
+
+.footer li {
+  font-size: $font-size-sm;
+  margin-bottom: 0;
+}
+
+@include media-breakpoint-up(md) {
+  .footer li {
+    font-size: $font-size-base;
+  }
+}

@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block seo %}
+{{ super() }}
+
+{% if config.title %}
+{% set title = config.title %}
+{% else %}
+{% set title = "" %}
+{% endif %}
+
+{% if config.extra.title_addition and title %}
+{% set title_addition = title_separator ~ config.extra.title_addition %}
+{% elif config.extra.title_addition %}
+{% set title_addition = config.extra.title_addition %}
+{% else %}
+{% set title_addition = "" %}
+{% endif %}
+
+{% set description = config.description %}
+
+{{ macros_head::seo(title=title, title_addition=title_addition, description=description, is_home=true) }}
+{% endblock seo %}
+
+{% block header %}
+{{ macros_header::header(current_section=current_section)}}
+{% endblock header %}
+
+{% block content %}
+<div class="px-4 pt-5 my-5 text-center">
+  <h1 class="display-4 fw-bold">{{ section.title | default(value="Centered screenshot") }}</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">{{ section.extra.lead | default(value="Please start setting config.toml and adding your
+      content.") | safe }}</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+      <a class="btn btn-primary btn-lg px-4 me-sm-3"
+         href="{{ section.extra.primary_url | default(value="/") | safe }}">
+        {{ section.extra.primary_button | default(value="Primary Button") }}
+      </a>
+      <a class="btn btn-outline-secondary btn-lg px-4"
+        href="{{ section.extra.secondary_url | default(value=" /") | safe }}">
+        {{ section.extra.secondary_button | default(value="Secondary Button") }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- <section class="section section-sm">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="display-5 fw-bold mb-5">Here’s how it works...</h2>
+      <img class="img-fluid mx-auto" style="transform: translateX(-10em)"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDQwIiBoZWlnaHQ9IjE4NSIgdmlld0JveD0iMCAwIDQ0MCAxODUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik00MDAuNTExIDY0Ljk3MTVDNDAwLjM3MSA2My4zMjA2IDQwMS41OTYgNjEuODY4OCA0MDMuMjQ3IDYxLjcyODlDNDA0Ljg5OCA2MS41ODkgNDA2LjM1IDYyLjgxMzkgNDA2LjQ4OSA2NC40NjQ5TDQwMC41MTEgNjQuOTcxNVpNMTEuNzg0NCAxODQuMTE0QzEwLjE4NTEgMTg0LjU0NyA4LjUzNzY3IDE4My42MDIgOC4xMDQ3MSAxODIuMDAyTDEuMDQ5MjQgMTU1Ljk0QzAuNjE2MzEyIDE1NC4zNDEgMS41NjE4MSAxNTIuNjk0IDMuMTYxMDggMTUyLjI2MUM0Ljc2MDM2IDE1MS44MjggNi40MDc4MiAxNTIuNzczIDYuODQwNzggMTU0LjM3M0wxMy4xMTIzIDE3Ny41MzlMMzYuMjc4NCAxNzEuMjY3QzM3Ljg3NzcgMTcwLjgzNCAzOS41MjUxIDE3MS43OCAzOS45NTgxIDE3My4zNzlDNDAuMzkxIDE3NC45NzggMzkuNDQ1NSAxNzYuNjI2IDM3Ljg0NjMgMTc3LjA1OUwxMS43ODQ0IDE4NC4xMTRaTTQwNi40ODkgNjQuNDY0OUM0MDguMDkgODMuMzU1MyA0MDQuNjM4IDk3LjIwMjUgMzk2LjU5NCAxMDYuOTExQzM4OC41NzEgMTE2LjU5NSAzNzYuNDI2IDEyMS42MiAzNjEuODIxIDEyMy44NTZDMzQ3LjIxNyAxMjYuMDkxIDMyOS43NjQgMTI1LjU5OSAzMTAuNjQyIDEyMy45MDRDMjkxLjUxMiAxMjIuMjA4IDI3MC40NTYgMTE5LjI4MSAyNDguNjkyIDExNi41N0MyMDUuMDExIDExMS4xMyAxNTguMjg4IDEwNi41NDIgMTE2LjM3MyAxMTMuOTM4Qzc0LjYwNzIgMTIxLjMwOCAzNy44MDYxIDE0MC41MzggMTMuNjAyNCAxODIuNzEyTDguMzk4NTQgMTc5LjcyNUMzMy42OTQ1IDEzNS42NDggNzIuMjY4MyAxMTUuNjI4IDExNS4zMyAxMDguMDNDMTU4LjI0MyAxMDAuNDU3IDIwNS44MDEgMTA1LjE4MiAyNDkuNDMzIDExMC42MTZDMjcxLjMyNSAxMTMuMzQzIDI5Mi4xODMgMTE2LjI0NCAzMTEuMTcyIDExNy45MjdDMzMwLjE3IDExOS42MTEgMzQ3LjA0MSAxMjAuMDQ4IDM2MC45MTMgMTE3LjkyNUMzNzQuNzg1IDExNS44MDEgMzg1LjI2OCAxMTEuMTc3IDM5MS45NzQgMTAzLjA4NEMzOTguNjU5IDk1LjAxNTIgNDAyLjAzNSA4Mi45NTYxIDQwMC41MTEgNjQuOTcxNUw0MDYuNDg5IDY0LjQ2NDlaIiBmaWxsPSIjMDBEMUNBIi8+CjxwYXRoIGQ9Ik00MDUgNzBDNDI0LjMzIDcwIDQ0MCA1NC4zMyA0NDAgMzVDNDQwIDE1LjY3IDQyNC4zMyAwIDQwNSAwQzM4NS42NyAwIDM3MCAxNS42NyAzNzAgMzVDMzcwIDU0LjMzIDM4NS42NyA3MCA0MDUgNzBaIiBmaWxsPSIjMDBEMUNBIi8+CjxwYXRoIGQ9Ik0zOTIuODI2IDM0Ljk5OUMzOTIuODI2IDI4LjMzNDIgMzk4LjMzMyAyMi44MjUxIDQwNS4yNTkgMjIuODI1MUM0MDkuMjE4IDIyLjgyNTEgNDEyLjcyOCAyNC42MzEzIDQxNS4wMDQgMjcuNDM4QzQxNi4zNjUgMjkuMTE2OCA0MTguODI5IDI5LjM3NDQgNDIwLjUwOCAyOC4wMTM1QzQyMi4xODYgMjYuNjUyNSA0MjIuNDQ0IDI0LjE4ODQgNDIxLjA4MyAyMi41MDk2QzQxNy4zNjggMTcuOTI3NSA0MTEuNjUxIDE0Ljk5OSA0MDUuMjU5IDE0Ljk5OUMzOTQuMTI5IDE0Ljk5OSAzODUgMjMuODk0NiAzODUgMzQuOTk5QzM4NSA0Ni4xMDM0IDM5NC4xMjkgNTQuOTk5IDQwNS4yNTkgNTQuOTk5QzQxMS42NTEgNTQuOTk5IDQxNy4zNjggNTIuMDcwNiA0MjEuMDgzIDQ3LjQ4ODRDNDIyLjQ0NCA0NS44MDk3IDQyMi4xODYgNDMuMzQ1NSA0MjAuNTA4IDQxLjk4NDZDNDE4LjgyOSA0MC42MjM2IDQxNi4zNjUgNDAuODgxMiA0MTUuMDA0IDQyLjU2QzQxMi43MjggNDUuMzY2NyA0MDkuMjE4IDQ3LjE3MjkgNDA1LjI1OSA0Ny4xNzI5QzM5OC4zMzMgNDcuMTcyOSAzOTIuODI2IDQxLjY2MzggMzkyLjgyNiAzNC45OTlaIiBmaWxsPSIjMUEyNjNFIi8+CjxwYXRoIGQ9Ik00MjEuMDg3IDM4LjkxMjFDNDIzLjI0OCAzOC45MTIxIDQyNSAzNy4xNjAxIDQyNSAzNC45OTlDNDI1IDMyLjgzNzkgNDIzLjI0OCAzMS4wODYgNDIxLjA4NyAzMS4wODZDNDE4LjkyNiAzMS4wODYgNDE3LjE3NCAzMi44Mzc5IDQxNy4xNzQgMzQuOTk5QzQxNy4xNzQgMzcuMTYwMSA0MTguOTI2IDM4LjkxMjEgNDIxLjA4NyAzOC45MTIxWiIgZmlsbD0iIzFBMjYzRSIvPgo8L3N2Zz4K" />
+    </div>
+    <section class="row">
+      <div class="col">
+        <h4 class="text-primary">Step 1</h4>
+        <h2 class="display-6 mb-3 fw-semibold lh-sm">Unlock productivity with one-click development environments</h2>
+        <p class="lead fw-normal">
+          From simple to complex apps with 30+ microservices, get instant environments for fast, repeatable and reliable
+          development workflows.
+        </p>
+      </div>
+      <div class="col">
+        <img class="img-fluid mt-3 mx-auto"
+          src="https://www.okteto.com/static/feature-dev-environment-64982815deb5650f0b75587f1baef745.svg"
+          alt="Bootstrap Icons" width="700" height="425" loading="lazy">
+      </div>
+    </section>
+
+    <section class="row">
+      <div class="col">
+        <img class="img-fluid mt-3 mx-auto"
+          src="https://www.okteto.com/static/feature-preview-92f00f15beada42ab6ddd9313a812059.svg" alt="Bootstrap Icons"
+          width="700" height="425" loading="lazy">
+      </div>
+      <div class="col">
+        <h3 class="text-primary">Step 2</h3>
+        <h2 class="display-5 mb-3 fw-semibold lh-sm">Previews for Everyone</h2>
+        <p class="lead fw-normal">
+          Okteto is the easiest and fastest way to get shareable preview environments with each pull request to keep
+          your entire organization in the loop and collaborating.
+        </p>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col">
+        <h3 class="text-primary">Step 3</h3>
+        <h2 class="display-5 mb-3 fw-semibold lh-sm">Scale with new workflows</h2>
+        <p class="lead fw-normal">
+          Once you’ve unlocked the power of Okteto, you’ll find the development process doesn’t stop at engineering. Use
+          environments for sales, customer feedback and more.
+        </p>
+      </div>
+      <div class="col">
+        <img class="img-fluid mt-3 mx-auto"
+          src="https://www.okteto.com/static/feature-scaling-a5550eb91c07fe97fc655f056aac6011.svg" alt="Bootstrap Icons"
+          width="700" height="425" loading="lazy">
+      </div>
+    </section>
+
+    <div class="text-center">
+      <img class="img-fluid mx-auto mb-5" style="transform: translateX(-10em)"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjc4IiBoZWlnaHQ9IjE1NyIgdmlld0JveD0iMCAwIDI3OCAxNTciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xLjI4MDExIDUuOTU4NDhDLTAuMDc3NDY0NSA1LjAwODY4IC0wLjQwODA0NSAzLjEzODE3IDAuNTQxNzYxIDEuNzgwNTlDMS40OTE1NyAwLjQyMzAwMiAzLjM2MjA3IDAuMDkyNDI2OSA0LjcxOTY4IDEuMDQyMjNMMS4yODAxMSA1Ljk1ODQ4Wk0yNTcuMTIyIDE1Ni4xMjFDMjU1Ljk1IDE1Ny4yOTMgMjU0LjA1MSAxNTcuMjkzIDI1Mi44NzkgMTU2LjEyMUwyMzMuNzg3IDEzNy4wM0MyMzIuNjE1IDEzNS44NTggMjMyLjYxNSAxMzMuOTU5IDIzMy43ODcgMTMyLjc4N0MyMzQuOTU5IDEzMS42MTUgMjM2Ljg1OCAxMzEuNjE1IDIzOC4wMyAxMzIuNzg3TDI1NSAxNDkuNzU3TDI3MS45NzEgMTMyLjc4N0MyNzMuMTQyIDEzMS42MTUgMjc1LjA0MiAxMzEuNjE1IDI3Ni4yMTMgMTMyLjc4N0MyNzcuMzg1IDEzMy45NTggMjc3LjM4NSAxMzUuODU4IDI3Ni4yMTMgMTM3LjAzTDI1Ny4xMjIgMTU2LjEyMVpNNC43MTk2OCAxLjA0MjIzQzEwLjE5NjYgNC44NzQwNyAxOC4xMzc2IDcuNTczNzUgMjguMTcxIDkuNTc0MTZDMzguMTU5NiAxMS41NjU2IDQ5LjkxOCAxMi44MDk2IDYyLjg0MyAxMy45MTA4Qzg4LjU3NyAxNi4xMDMyIDExOC44NDQgMTcuNzEyMyAxNDcuNTc5IDIzLjY5NjNDMTc2LjMzNiAyOS42ODQ3IDIwMy45OTUgNDAuMTI5MiAyMjQuNDY4IDYwLjI4NzRDMjQ1LjAyOSA4MC41MzI5IDI1OCAxMTAuMjM1IDI1OCAxNTRMMjUyIDE1NEMyNTIgMTExLjUxNSAyMzkuNDYgODMuNDcgMjIwLjI1OCA2NC41NjI3QzIwMC45NjcgNDUuNTY4IDE3NC42MSAzNS40NTQxIDE0Ni4zNTYgMjkuNTcwMkMxMTguMDggMjMuNjgyIDg4LjM0MTYgMjIuMTA0OSA2Mi4zMzM3IDE5Ljg4OTFDNDkuMzg3NyAxOC43ODYyIDM3LjM0MTEgMTcuNTIwNSAyNi45OTc4IDE1LjQ1ODNDMTYuNjk5MiAxMy40MDUxIDcuNzgxNDUgMTAuNTA3IDEuMjgwMTEgNS45NTg0OEw0LjcxOTY4IDEuMDQyMjNaIiBmaWxsPSIjMDBEMUNBIi8+Cjwvc3ZnPgo=" />
+      <div class="d-grid col-2 mx-auto">
+        <button class="btn btn-primary btn-lg" type="button">Let's talk</button>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="section section-sm">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      {% if section.extra.list %}
+      {% for val in section.extra.list %}
+      <div class="col-lg-5">
+        <h2 class="h4">{{ val.title }}</h2>
+        <p>{{ val.content | safe }}</p>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section section-sm">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-4">
+      <div class="col">
+        <h1>Keep exploring...</h1>
+        <p>Remote development environments help everyone go faster. We’re sure there’s an Amphitheatre solution for your
+          team.</p>
+      </div>
+      <div class="col">
+        <div class="card h-100 rounded-3 shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title">Open Source</h2>
+            <p class="card-text">Use the pieces of Amphitheatre that are right for you</p>
+            <a class="card-link">Github</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 rounded-3 shadow-sm bg-info">
+          <div class="card-body">
+            <h2 class="card-title">Cloud</h2>
+            <p class="card-text">Our hosted solution for individuals and teams</p>
+            <a class="card-link">Try free</a>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 rounded-3 shadow-sm text-bg-dark">
+          <div class="card-body">
+            <h2 class="card-title">Self-hosted</h2>
+            <p class="card-title">Run Amphitheatre on your own infrastructure</p>
+            <a class="card-link">Get a demo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="section section-sm container-fluid">
+  <div class="row justify-content-center text-center">
+    <div class="col-lg-9"></div>
+  </div>
+</section>
+{% endblock content %}
