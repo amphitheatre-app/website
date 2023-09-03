@@ -84,7 +84,7 @@ toc = false
 # weight = 30
 
 # [[extra.menu.main]]
-# name = "Docs"
+# name = "Documentation"
 # section = "docs"
 # url = "https://docs.amphitheatre.app"
 # weight = 40
@@ -109,7 +109,7 @@ post = "v0.1.0"
 weight = 20
 
 [extra.footer]
-copyright = "Copyright © 2022 Amphitheatre. All rights reserved."
+copyright = "Copyright © 2023 The Amphitheatre Authors. All rights reserved. Open source licensed under the Apache License, Version 2.0"
 
 # Products
 [[extra.footer.nav]]
