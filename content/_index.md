@@ -1,11 +1,11 @@
 +++
-title = "Make Development Faster"
+title = "Accelerated Cloud Development Environments for Developers"
 
 [extra]
-lead = "Instantly spin up fresh, automated dev environments in the cloud and start developing within seconds."
-primary_button = "Get Started"
-primary_url = "https://docs.amphitheatre.app/"
-secondary_button = "GitHub"
+lead = "Instantly spin up fresh, automated dev environments in the cloud and start developing with on-demand pre-configured tools, libraries, and dependencies."
+primary_button = "Get Started Now"
+primary_url = "https://docs.amphitheatre.app/getting-started/"
+secondary_button = "Star on GitHub"
 secondary_url = "https://github.com/amphitheatre-app"
 
 [[extra.list]]

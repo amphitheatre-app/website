@@ -27,27 +27,32 @@
 {% endblock header %}
 
 {% block content %}
-<div class="px-4 my-5 text-center">
-  <h1 class="display-3 fw-bold">{{ config.title }}</h1>
-  <h1 class="display-4">{{ section.title | default(value="Centered screenshot") }}</h1>
-  <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">{{ section.extra.lead | default(value="Please start setting config.toml and adding your
-      content.") | safe }}</p>
-    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-      <a class="btn btn-primary btn-lg px-4 me-sm-3"
-         href="{{ section.extra.primary_url | default(value="/") | safe }}">
-        {{ section.extra.primary_button | default(value="Primary Button") }}
-      </a>
-      <a class="btn btn-outline-secondary btn-lg px-4"
-        href="{{ section.extra.secondary_url | default(value=" /") | safe }}">
-        {{ section.extra.secondary_button | default(value="Secondary Button") }}
-      </a>
+<div class="container">
+  <div class="px-7 my-5 text-center">
+    <h1 class="display-3 fw-bold">{{ section.title | default(value="Centered screenshot") }}</h1>
+    <div class="col-lg-10 mx-auto">
+      <p class="lead mb-4">{{ section.extra.lead | default(value="Please start setting config.toml and adding your
+        content.") | safe }}</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <a class="btn btn-primary btn-lg px-4 me-sm-3"
+          href="{{ section.extra.primary_url | default(value="/") | safe }}">
+          {{ section.extra.primary_button | default(value="Primary Button") }}
+        </a>
+        <a class="btn btn-outline-secondary btn-lg px-4"
+          href="{{ section.extra.secondary_url | default(value=" /") | safe }}">
+          {{ section.extra.secondary_button | default(value="Secondary Button") }}
+        </a>
+      </div>
     </div>
   </div>
 </div>
 
+<div class="container">
+  <img class="img-fluid" src="{{ get_url(path="images/screenshot.png") | safe }}" />
+</div>
+
 <main>
-  <div class="container" role="">
+  <div class="container">
     {{ section.content | safe }}
   </div>
 </main>
