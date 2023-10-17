@@ -21,9 +21,15 @@
 		<div class="collapse navbar-collapse order-4 order-md-1">
 			<ul class="navbar-nav main-nav me-auto order-5 order-md-2">
 				{% for val in config.extra.menu.main %}
-					<li class="nav-item">
-						<a class="nav-link" href="{{ val.url | safe }}">{{ val.name }}</a>
-					</li>
+				<li class="nav-item">
+					{%- if val.path -%}
+						<a class="nav-link {% if val.active %}active{% endif %}" href="{{ get_url(path=val.path, lang=lang) }}">{{ trans(key="menu_" ~  val.name, lang=lang) }}</a>
+					{%- elif val.trans and lang != config.default_language -%}
+						<a class="nav-link {% if val.active %}active{% endif %}" href="{{ val.url | safe }}/{{ lang }}/">{{ trans(key="menu_" ~  val.name, lang=lang) }}</a>
+					{%- else -%}
+						<a class="nav-link {% if val.active %}active{% endif %}" href="{{ val.url | safe }}">{{ trans(key="menu_" ~  val.name, lang=lang) }}</a>
+					{%- endif -%}
+				</li>
 				{% endfor %}
 			</ul>
 			<div class="break order-6 d-md-none"></div>
