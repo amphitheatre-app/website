@@ -4,7 +4,7 @@
 	<div class="container">
 		<input class="menu-btn order-0" type="checkbox" id="menu-btn">
 		<label class="menu-icon d-md-none" for="menu-btn"><span class="navicon"></span></label>
-		<a class="navbar-brand order-1 order-md-0 me-auto" href="{{ config.base_url | safe }}">{{ config.title | default(value="Doks") }}</a>
+		<a class="navbar-brand order-1 order-md-0 me-auto" href="{{ get_url(path="@/_index.md", lang=lang) }}">{{ config.title | default(value="Doks") }}</a>
 		<!-- <button id="mode" class="btn btn-link order-2 order-md-4" type="button" aria-label="Toggle mode">
 			<span class="toggle-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
 			<span class="toggle-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
@@ -36,7 +36,7 @@
 			{% endif %}
 			</div>
 
-			<!-- <ul class="navbar-nav main-nav me-auto order-5 order-md-2">
+			<ul class="navbar-nav main-nav me-auto order-5 order-md-2">
 				<li class="nav-item dropdown">
 					<a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" class="iconLanguage_nlXk"><path fill="currentColor" d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"></path></svg>
@@ -72,7 +72,7 @@
 						{%- endfor -%}
 					</ul>
 				</li>
-			</ul> -->
+			</ul>
 	</div>
 </header>
 {% endmacro %}
