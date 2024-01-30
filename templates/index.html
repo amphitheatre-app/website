@@ -39,8 +39,12 @@
           {{ section.extra.primary_button | default(value="Primary Button") }}
         </a>
         <a class="btn btn-outline-secondary btn-lg px-4"
-          href="{{ section.extra.secondary_url | default(value=" /") | safe }}">
-          {{ section.extra.secondary_button | default(value="Secondary Button") }}
+        href="{{ section.extra.secondary_url | default(value=" /") | safe }}">
+        {{ section.extra.secondary_button | default(value="Secondary Button") }}
+        </a>
+        <a class="btn btn-outline-secondary btn-lg px-4"
+          href="https://docs.amphitheatre.app/web3-developer-guide/blockchains/">
+          Web3 Dev Stack
         </a>
       </div>
     </div>
