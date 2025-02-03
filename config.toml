@@ -130,7 +130,7 @@ post = "v0.1.0"
 weight = 20
 
 [extra.footer]
-copyright = "Copyright © 2024 The Amphitheatre Authors. All rights reserved. Open source licensed under the Apache License, Version 2.0"
+copyright = "Copyright © 2025 The Amphitheatre Authors. All rights reserved. Open source licensed under the Apache License, Version 2.0"
 
 # Products
 [[extra.footer.nav]]
